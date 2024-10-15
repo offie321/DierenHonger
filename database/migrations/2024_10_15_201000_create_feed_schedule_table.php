@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leds', function (Blueprint $table) {
+        Schema::create('feed_schedules', function (Blueprint $table) {
             $table->id();
-            $table->integer('led_is_on');
+            $table->time('feeding_time');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leds');
+        Schema::dropIfExists('feed_schedules');
     }
 };
