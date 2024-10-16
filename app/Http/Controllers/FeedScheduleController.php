@@ -36,4 +36,9 @@ class FeedScheduleController extends Controller
         $feedSchedule->delete();
         return redirect()->back()->with('success', 'Feeding time deleted!');
     }
+
+    public function getFeedingTimes() {
+        $feedingTimes = FeedSchedule::pluck('feeding_time');
+        return response()->json($feedingTimes);
+    }
 }
