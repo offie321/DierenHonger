@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class SiloWeight extends Model
 {
     use HasFactory;
+    protected $table = 'silo_weights';
+    protected $fillable = [
+        'weight',
+    ];
 }
