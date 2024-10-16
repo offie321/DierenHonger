@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FeedSchedule;
+use App\Models\SiloWeight;
 use Illuminate\Http\Request;
 
 class FeedScheduleController extends Controller
@@ -10,7 +11,11 @@ class FeedScheduleController extends Controller
     public function index()
     {
         $schedules = FeedSchedule::all();
-        return view('feed_schedule.index', compact('schedules'));
+        $siloWeight = SiloWeight::latest()->first();
+        $bijnaLeeg = 20.0;
+        $isBijnaLeeg = $siloWeight && $siloWeight->weight < $bijnaLeeg;
+
+        return view('feed_schedule.index', compact('schedules', 'siloWeight', 'isBijnaLeeg'));
     }
 
     public function store(Request $request)

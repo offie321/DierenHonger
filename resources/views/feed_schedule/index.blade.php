@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Pet Feeder Schedule</title>
+    <title>Pet Feeder Dashboard</title>
 </head>
 <body>
-    <h1>Pet Feeder Schedule</h1>
+    <h1>Pet Feeder Dashboard</h1>
 
-    
     @if(session('success'))
-        <p class="success">{{ session('success') }}</p>
+        <p style="color: green;">{{ session('success') }}</p>
     @endif
 
     <form action="/feed-schedule" method="POST">
@@ -21,7 +20,6 @@
         <button type="submit">Add Time</button>
     </form>
 
-   
     <h2>Scheduled Feeding Times:</h2>
     <ul>
         @foreach($schedules as $schedule)
@@ -35,5 +33,14 @@
             </li>
         @endforeach
     </ul>
+
+    <h2>Silo Refill Status:</h2>
+    <p>Momenteel zit er: {{ $siloWeight->weight ?? '???' }} gram in de silo</p>
+
+    @if($isBijnaLeeg)
+        <p class="fail">De silo is bijna leeg! Vul het snel bij!</p>
+    @else
+        <p class="success">Er zit genoeg voer in de silo</p>
+    @endif
 </body>
 </html>
