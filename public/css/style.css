@@ -1,3 +1,6 @@
 .success{
     color:green;
 }
+.fail{
+    color:darkred;
+}

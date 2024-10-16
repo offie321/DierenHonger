@@ -15,13 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
-        DB::table('leds')->insert([
-            'led_is_on' => 0,
-        ]);
-
-        DB::table('counts')->insert([
-            'times_pressed' => 0,
-        ]);
+        $this->call(SiloWeightSeeder::class);
     }
 }
