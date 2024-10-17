@@ -1,15 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LedController;
-use App\Http\Controllers\CountController;
+use App\Http\Controllers\FeedScheduleController;
+use App\Http\Controllers\SiloController;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/feed-schedule', [FeedScheduleController::class, 'index']); 
+Route::post('/feed-schedule', [FeedScheduleController::class, 'store']);
+Route::delete('/feed-schedule/{feedSchedule}', [FeedScheduleController::class, 'destroy']);
 
-
-Route::get('/', [LedController::class, 'index']);
-Route::get('/toggle_led', [LedController::class, 'toggle_led']);
-Route::get('/get_led_state', [LedController::class, 'get_led_state']);
-Route::get('/button_pressed', [CountController::class, 'button_pressed']);
+Route::get('/weight/{weight}', [SiloController::class, 'updateWeight']);

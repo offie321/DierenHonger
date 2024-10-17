@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Led extends Model
+class FeedSchedule extends Model
 {
     use HasFactory;
-    
-
-    protected $table = 'leds';
+    protected $fillable = ['feeding_time'];
 }

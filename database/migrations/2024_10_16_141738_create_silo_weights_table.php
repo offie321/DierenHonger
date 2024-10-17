@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('counts', function (Blueprint $table) {
+        Schema::create('silo_weights', function (Blueprint $table) {
             $table->id();
-            $table->integer('times_pressed');
+            $table->float('weight');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('counts');
+        Schema::dropIfExists('silo_weights');
     }
 };
